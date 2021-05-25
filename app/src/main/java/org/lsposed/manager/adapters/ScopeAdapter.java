@@ -220,14 +220,15 @@ public class ScopeAdapter extends RecyclerView.Adapter<ScopeAdapter.ViewHolder> 
     }
 
     private void checkAllApp(boolean isAll) {
-        for(int i=0;i<=showList.size();i++){
-            AppInfo app = showList.get(i);
-            if(isAll){
+        if(isAll){
+            for(int i=0;i<showList.size();i++){
+                AppInfo app = showList.get(i);
                 checkedList.add(app.application);
-            }else{
-                checkedList.clear();
             }
+        }else {
+            checkedList.clear();
         }
+
         ConfigManager.setModuleScope(module.packageName, checkedList);
     }
 
