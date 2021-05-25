@@ -54,22 +54,22 @@ public class InstallerVerifier {
     }
 
     public static void hookXposedInstaller(final ClassLoader classLoader) {
-//        try {
-//            Class<?> ConstantsClass = XposedHelpers.findClass("org.lsposed.manager.Constants", classLoader);
-//            XposedHelpers.findAndHookMethod(android.app.Activity.class, "onCreate", Bundle.class, new XC_MethodHook() {
-//                @Override
-//                protected void afterHookedMethod(MethodHookParam param) {
-//                    try {
-//                        XposedHelpers.callStaticMethod(ConstantsClass, "showErrorToast", 0);
-//                    } catch (Throwable t) {
-//                        Utils.logW("showErrorToast: ", t);
-//                        Toast.makeText((Context) param.thisObject, "This application has been destroyed, please make sure you download it from the official source.", Toast.LENGTH_LONG).show();
-//                    }
-//                    new Handler().postDelayed(() -> System.exit(0), 50);
-//                }
-//            });
-//        } catch (Throwable t) {
-//            Utils.logW("hookXposedInstaller: ", t);
-//        }
+        try {
+            Class<?> ConstantsClass = XposedHelpers.findClass("org.lsposed.manager.Constants", classLoader);
+            XposedHelpers.findAndHookMethod(android.app.Activity.class, "onCreate", Bundle.class, new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) {
+                    try {
+                        XposedHelpers.callStaticMethod(ConstantsClass, "showErrorToast", 0);
+                    } catch (Throwable t) {
+                        Utils.logW("showErrorToast: ", t);
+                        Toast.makeText((Context) param.thisObject, "This application has been destroyed, please make sure you download it from the official source.", Toast.LENGTH_LONG).show();
+                    }
+                    //new Handler().postDelayed(() -> System.exit(0), 50);
+                }
+            });
+        } catch (Throwable t) {
+            Utils.logW("hookXposedInstaller: ", t);
+        }
     }
 }
