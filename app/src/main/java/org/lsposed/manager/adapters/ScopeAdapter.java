@@ -225,7 +225,7 @@ public class ScopeAdapter extends RecyclerView.Adapter<ScopeAdapter.ViewHolder> 
             if(isAll){
                 checkedList.add(app.application);
             }else{
-                checkedList.remove(app.application);
+                checkedList.clear();
             }
         }
         ConfigManager.setModuleScope(module.packageName, checkedList);

@@ -38,7 +38,9 @@
 
     <item
         android:id="@+id/use_all"
-       android:title="@string/use_all" />
+        android:checkable="true"
+        android:checked="false"
+        android:title="@string/use_all" />
 
     <item
         android:title="@string/menu_filter"
