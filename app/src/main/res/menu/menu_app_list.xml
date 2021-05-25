@@ -37,6 +37,10 @@
         android:title="@string/use_recommended" />
 
     <item
+        android:id="@+id/use_all"
+       android:title="@string/use_all" />
+
+    <item
         android:title="@string/menu_filter"
         app:showAsAction="never">
         <menu>

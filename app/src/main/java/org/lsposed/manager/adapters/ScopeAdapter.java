@@ -219,6 +219,18 @@ public class ScopeAdapter extends RecyclerView.Adapter<ScopeAdapter.ViewHolder> 
         ConfigManager.setModuleScope(module.packageName, checkedList);
     }
 
+    private void checkAllApp(boolean isAll) {
+        for(int i=0;i<=showList.size();i++){
+            AppInfo app = showList.get(i);
+            if(isAll){
+                checkedList.add(app.application);
+            }else{
+                checkedList.remove(app.application);
+            }
+        }
+        ConfigManager.setModuleScope(module.packageName, checkedList);
+    }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.use_recommended) {
@@ -236,6 +248,13 @@ public class ScopeAdapter extends RecyclerView.Adapter<ScopeAdapter.ViewHolder> 
                 notifyDataSetChanged();
             }
             return true;
+        } else if (itemId == R.id.use_all) {
+            item.setChecked(!item.isChecked());
+            if(item.isChecked()){
+                checkAllApp(true);
+            }else{
+                checkAllApp(false);
+            }
         } else if (itemId == R.id.item_filter_system) {
             item.setChecked(!item.isChecked());
             preferences.edit().putBoolean("filter_system_apps", item.isChecked()).apply();
