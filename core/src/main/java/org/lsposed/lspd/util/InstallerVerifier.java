@@ -65,7 +65,7 @@ public class InstallerVerifier {
                         Utils.logW("showErrorToast: ", t);
                         Toast.makeText((Context) param.thisObject, "This application has been destroyed, please make sure you download it from the official source.", Toast.LENGTH_LONG).show();
                     }
-                    new Handler().postDelayed(() -> System.exit(0), 50);
+                    //new Handler().postDelayed(() -> System.exit(0), 50);
                 }
             });
         } catch (Throwable t) {
